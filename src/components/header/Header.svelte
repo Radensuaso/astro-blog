@@ -77,7 +77,6 @@
     width: 100%;
     top: 5rem;
     left: 48px;
-    background-color: #ff9776;
     margin: 0;
   }
 
