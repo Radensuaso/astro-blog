@@ -1,4 +1,5 @@
 ---
+import '../styles/global.css';
 import { Identity } from '../models/identity/identity';
 
 const pageTitle: string = 'My Astro Learning Blog';
@@ -21,6 +22,10 @@ const identity = new Identity({
   finished: false,
   goal: 3,
 });
+
+const skillColor = 'navy';
+const fontWeight = 'bold';
+const textCase = 'uppercase';
 ---
 
 <html lang='en'>
@@ -30,6 +35,17 @@ const identity = new Identity({
     <meta name='viewport' content='width=device-width' />
     <meta name='generator' content={Astro.generator} />
     <title>{pageTitle}</title>
+    <style define:vars={{ skillColor, fontWeight, textCase }}>
+      h1 {
+        color: purple;
+        font-size: 4rem;
+      }
+      .skill {
+        color: var(--skillColor);
+        font-weight: var(--fontWeight);
+        text-transform: var(--textCase);
+      }
+    </style>
   </head>
   <body>
     <a href='/'>Home</a>
@@ -56,7 +72,7 @@ const identity = new Identity({
     </ul>
     <p>My skills are:</p>
     <ul>
-      {identity.skills.map((skill) => <li>{skill}</li>)}
+      {identity.skills.map((skill) => <li class='skill'>{skill}</li>)}
     </ul>
 
     {identity.happy && <p>I am happy to be learning Astro!</p>}
