@@ -1,5 +1,26 @@
 ---
-const pageTitle: string = 'About Me';
+import { Identity } from '../models/identity/identity';
+
+const pageTitle: string = 'My Astro Learning Blog';
+
+const identity = new Identity({
+  firstName: 'André',
+  hobbies: ['Video Games', 'Coding', 'Reading'],
+  country: 'Portugal',
+  occupation: 'Software Engineer',
+  skills: [
+    'JavaScript',
+    'TypeScript',
+    'React',
+    'Node.js',
+    'MongoDB',
+    'PostgreSQL',
+    'Astro',
+  ],
+  happy: true,
+  finished: false,
+  goal: 3,
+});
 ---
 
 <html lang='en'>
@@ -15,17 +36,45 @@ const pageTitle: string = 'About Me';
     <a href='/about'>About</a>
     <a href='/blog'>Blog</a>
 
-    <h1>About Me</h1>
-    <h2>... and my new Astro site!</h2>
+    <h1>My Astro Learning Blog</h1>
+    <p>This is where I will post about my journey learning Astro.</p>
 
-    <p>
-      I am working through Astro's introductory tutorial. This is the second
-      page on my website, and it's the first one I built myself!
-    </p>
+    <p>Here are a few facts about me:</p>
+    <ul>
+      <li>My name is {identity.firstName}.</li>
+      <li>
+        I live in {identity.country} and I work as a {identity.occupation}.
+      </li>
+      {
+        identity.hobbies.length >= 2 && (
+          <li>
+            Two of my hobbies are: {identity.hobbies[0]} and{' '}
+            {identity.hobbies[1]}
+          </li>
+        )
+      }
+    </ul>
+    <p>My skills are:</p>
+    <ul>
+      {identity.skills.map((skill) => <li>{skill}</li>)}
+    </ul>
 
-    <p>
-      This site will update as I complete more of the tutorial, so keep checking
-      back and see how my journey is going!
-    </p>
+    {identity.happy && <p>I am happy to be learning Astro!</p>}
+
+    {identity.finished && <p>I finished this tutorial!</p>}
+
+    {
+      identity.goal === 3 ? (
+        <p>My goal is to finish in 3 days.</p>
+      ) : (
+        <p>My goal is not 3 days.</p>
+      )
+    }
+
+    <ul>
+      <li><a href='/posts/post-1'>Post 1</a></li>
+      <li><a href='/posts/post-2'>Post 2</a></li>
+      <li><a href='/posts/post-3'>Post 3</a></li>
+    </ul>
   </body>
 </html>
