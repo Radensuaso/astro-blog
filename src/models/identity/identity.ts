@@ -1,20 +1,34 @@
+import type { IIdentity } from './identity.d';
+
 /**
  * Identity class
  *
  * @class Identity
+ * @implements {IIdentity} -
  *
- * Types of Identity
+ * Properties
  *
- * @type {string} firstName - First name
- * @type {string} country - Country
- * @type {string} occupation - Occupation
- * @type {string[]} hobbies - Hobbies
- * @type {string[]} skills - Skills
- * @type {boolean} happy - Happy
- * @type {boolean} finished - Finished
- * @type {number} goal - Goal
+ * @property {string} firstName - First name
+ * @property {string} country - Country
+ * @property {string} occupation - Occupation
+ * @property {string[]} hobbies - Hobbies
+ * @property {string[]} skills - Skills
+ * @property {boolean} happy - Happy
+ * @property {boolean} finished - Finished
+ * @property {number} goal - Goal
+ *
+ * @param {IIdentity} identity
+ * @example const identity = new Identity({ firstName: 'John',
+ * country: 'USA',
+ * occupation: 'Developer',
+ * hobbies: ['Soccer', 'Basketball'],
+ * skills: ['JavaScript', 'TypeScript'],
+ * happy: true,
+ * finished: false,
+ * goal: 3
+ * });
  */
-export class Identity {
+export class Identity implements IIdentity {
   firstName: string;
   country: string;
   occupation: string;
@@ -23,21 +37,8 @@ export class Identity {
   happy: boolean;
   finished: boolean;
   goal: number;
-  /**
-   * Creates an instance of Identity.
-   * @param {Identity} identity - Identity
-   * @example const identity = new Identity({
-   * firstName: 'John',
-   * country: 'USA',
-   * occupation: 'Developer',
-   * hobbies: ['Soccer', 'Basketball'],
-   * skills: ['JavaScript', 'TypeScript', 'Node.js', 'React', 'Angular', 'Vue']
-   * happy: true,
-   * finished: false,
-   * goal: 100
-   * });
-   */
-  constructor(identity: Identity) {
+
+  constructor(identity: IIdentity) {
     this.firstName = identity.firstName;
     this.country = identity.country;
     this.occupation = identity.occupation;
