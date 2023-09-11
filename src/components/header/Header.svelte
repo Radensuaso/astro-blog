@@ -1,27 +1,8 @@
 <script lang="ts">
-  import { onDestroy, onMount } from 'svelte';
-
-  let screenWidth = 0;
-  let show = false;
-
-  onMount(() => {
-    screenWidth = window.innerWidth;
-    show = screenWidth >= 636;
-
-    function updateScreenSize() {
-      screenWidth = window.innerWidth;
-      show = screenWidth >= 636;
-    }
-
-    window.addEventListener('resize', updateScreenSize);
-
-    onDestroy(() => {
-      window.removeEventListener('resize', updateScreenSize);
-    });
-  });
+  let expand = false;
 
   function toggleNavigation() {
-    show = !show;
+    expand = !expand;
   }
 
   function handleKeyDown(event: KeyboardEvent) {
@@ -46,13 +27,11 @@
       <span class="line" />
     </div>
 
-    {#if show}
-      <div class="nav-links">
-        <a href="/">Home</a>
-        <a href="/about">About</a>
-        <a href="/blog">Blog</a>
-      </div>
-    {/if}
+    <div class={expand ? 'nav-links expand' : 'nav-links'}>
+      <a href="/">Home</a>
+      <a href="/about">About</a>
+      <a href="/blog">Blog</a>
+    </div>
   </nav>
 </header>
 
@@ -78,6 +57,7 @@
     top: 5rem;
     left: 48px;
     margin: 0;
+    display: none;
   }
 
   .nav-links a {
@@ -88,6 +68,10 @@
     font-size: 1.2rem;
     font-weight: bold;
     text-transform: uppercase;
+  }
+
+  .expand {
+    display: unset;
   }
 
   .nav-links a:hover,
@@ -102,6 +86,7 @@
       position: static;
       width: auto;
       background: none;
+      display: block;
     }
 
     .nav-links a {
