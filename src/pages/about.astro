@@ -1,11 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import '../styles/global.css';
-import { Identity } from '../models/identity/identity';
+import type { Identity } from '../models/identity/identity';
 
 const pageTitle: string = 'My Astro Learning Blog';
 
-const identity = new Identity({
+const identity: Identity = {
   firstName: 'André',
   hobbies: ['Video Games', 'Coding', 'Reading'],
   country: 'Portugal',
@@ -22,7 +21,7 @@ const identity = new Identity({
   happy: true,
   finished: false,
   goal: 3,
-});
+};
 
 const skillColor = 'navy';
 const fontWeight = 'bold';

@@ -1,6 +1,10 @@
 ---
+import type { BlogPost } from '../models/blogPost/BlogPost';
 import BaseLayout from './BaseLayout.astro';
 
+interface Props {
+  frontmatter: BlogPost;
+}
 const { frontmatter } = Astro.props;
 ---
 

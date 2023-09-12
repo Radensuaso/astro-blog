@@ -1,7 +1,7 @@
 /**
  * Identity interface
  *
- * @interface IIdentity
+ * @interface Identity
  *
  * @type {string} firstName - First name
  * @type {string} country - Country
@@ -12,7 +12,7 @@
  * @type {boolean} finished - Finished
  * @type {number} goal - Goal
  */
-export interface IIdentity {
+export interface Identity {
   firstName: string;
   country: string;
   occupation: string;

@@ -1,0 +1,15 @@
+---
+import type { BlogPost } from '../../models/blogPost/BlogPost';
+
+interface Props {
+  blogPost: BlogPost;
+}
+const { blogPost: blogPost } = Astro.props;
+---
+
+<div style='margin-bottom: 20px;'>
+  <h2>{blogPost.title}</h2>
+  <a href={blogPost.layout}>
+    <img src={blogPost.image.url} alt={blogPost.image.alt} />
+  </a>
+</div>
