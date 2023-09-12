@@ -1,6 +1,7 @@
 ---
 import BlogPostItem from '../components/BlogPost/BlogPostItem.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import type { MarkdownInstance } from 'astro';
 import type { BlogPost } from '../models/blogPost/BlogPost';
 const allPosts = await Astro.glob('./posts/*.md');
 const pageTitle = 'My Astro Learning Blog';
@@ -10,8 +11,8 @@ const pageTitle = 'My Astro Learning Blog';
   <p>This is where I will post about my journey learning Astro.</p>
   <ul>
     {
-      allPosts.map((post) => (
-        <BlogPostItem blogPost={post.frontmatter as BlogPost} />
+      allPosts.map((markdown) => (
+        <BlogPostItem markdown={markdown as MarkdownInstance<BlogPost>} />
       ))
     }
   </ul>

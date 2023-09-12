@@ -1,15 +1,11 @@
 ---
+import type { MarkdownInstance } from 'astro';
 import type { BlogPost } from '../../models/blogPost/BlogPost';
 
 interface Props {
-  blogPost: BlogPost;
+  markdown: MarkdownInstance<BlogPost>;
 }
-const { blogPost: blogPost } = Astro.props;
+const { markdown } = Astro.props;
 ---
 
-<div style='margin-bottom: 20px;'>
-  <h2>{blogPost.title}</h2>
-  <a href={blogPost.layout}>
-    <img src={blogPost.image.url} alt={blogPost.image.alt} />
-  </a>
-</div>
+<a href={markdown.url}> <h2>{markdown.frontmatter.title}</h2></a>
