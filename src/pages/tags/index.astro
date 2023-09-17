@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+import type { MarkdownInstance } from 'astro';
+import type { BlogPost } from '../../models/blogPost/BlogPost';
+import TagList from '../../components/TagList.astro';
+
+const pageTitle = 'Tags index';
+
+const markdowns: MarkdownInstance<BlogPost>[] =
+  await Astro.glob('../posts/*.md');
+
+const tags = [
+  ...new Set(markdowns.map((markdown) => markdown.frontmatter.tags).flat()),
+];
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <TagList tags={tags} />
+</BaseLayout>

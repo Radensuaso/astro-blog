@@ -1,4 +1,5 @@
 ---
+import TagList from '../components/TagList.astro';
 import type { BlogPost } from '../models/blogPost/BlogPost';
 import BaseLayout from './BaseLayout.astro';
 
@@ -14,4 +15,5 @@ const { frontmatter } = Astro.props;
   <p>Written by: {frontmatter.author}</p>
   <img src={frontmatter.image.url} width='300' alt={frontmatter.image.alt} />
   <slot />
+  <TagList tags={frontmatter.tags} />
 </BaseLayout>

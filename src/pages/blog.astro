@@ -1,8 +1,8 @@
 ---
-import BlogPostItem from '../components/BlogPost/BlogPostItem.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import type { MarkdownInstance } from 'astro';
 import type { BlogPost } from '../models/blogPost/BlogPost';
+import BlogPostItem from '../components/BlogPostItem.astro';
 const allPosts = await Astro.glob('./posts/*.md');
 const pageTitle = 'My Astro Learning Blog';
 ---
