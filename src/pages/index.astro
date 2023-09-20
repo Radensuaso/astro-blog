@@ -1,7 +1,10 @@
 ---
+import Greeting from '../components/Greeting.svelte';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const pageTitle: string = 'Home Page';
 ---
 
-<BaseLayout pageTitle={pageTitle} />
+<BaseLayout pageTitle={pageTitle}>
+  <Greeting client:load messages={['Hi', 'Hello', 'Howdy', 'Hey there']} />
+</BaseLayout>
